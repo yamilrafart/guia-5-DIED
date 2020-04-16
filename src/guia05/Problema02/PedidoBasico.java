@@ -60,7 +60,7 @@ public class PedidoBasico extends Pedido {
 	}
 	
 	@Override
-	public  Double comisiones() {
+	public  Double comision() {
 		
 		if (this.express) {
 			

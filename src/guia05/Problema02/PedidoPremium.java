@@ -53,7 +53,7 @@ public class PedidoPremium extends Pedido {
 	}
 		
 	@Override
-	public  Double comisiones() {
+	public  Double comision() {
 		
 		Double total = 0D;
 		if (this.listaProductos.size() <= this._MAX_PRODUCTOS_V1) {

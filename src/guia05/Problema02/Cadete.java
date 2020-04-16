@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Cadete {
 	
 	// ATRIBUTOS
-	ArrayList<Pedido> listaPedidos = new ArrayList<>();
+	ArrayList<Comisionables> listaObjetos = new ArrayList<>();
 	
 	//CONSTRUCTOR
 	public Cadete() {
@@ -22,8 +22,11 @@ public class Cadete {
 	//“agregarPedido”: agrega un pedido que tiene que llevar el cadete
 	public void agregarPedido(Pedido unPedido) {
 		
-		this.listaPedidos.add(unPedido);
+		this.listaObjetos.add(unPedido);
 		
+	}
+	public void agregarTramite(Tramite unTramite) {
+		this.listaObjetos.add(unTramite);
 	}
 	
 	//“comisiones” que retorna el total de comisiones que cobrará el cadete
@@ -32,18 +35,24 @@ public class Cadete {
 		
 		Double total = 0D;
 		int i =0;
-		for(Pedido unPedido : this.listaPedidos) {
+		for(Comisionables unObjeto : this.listaObjetos) {
 			
-			if (unPedido instanceof PedidoBasico) {
+			if (unObjeto instanceof PedidoBasico) {
 				
-				total += ((unPedido.precio() + unPedido.comisiones())*0.1);
+				total += ((((PedidoBasico)unObjeto).precio() + ((PedidoBasico)unObjeto).comision())*0.1);
+				i += ((PedidoBasico)unObjeto).listaProductos.size();
 				
-			} else if (unPedido instanceof PedidoPremium) {
+			} else if (unObjeto instanceof PedidoPremium) {
 				
-				total += ((unPedido.precio() + unPedido.comisiones())*0.15);
+				total += ((((PedidoPremium)unObjeto).precio() + ((PedidoPremium)unObjeto).comision())*0.15);
+				i += ((PedidoPremium)unObjeto).listaProductos.size();
+				
+			} else if (unObjeto instanceof Tramite) {
+				
+				total += ((Tramite)unObjeto).comision();
 				
 			}
-			i += unPedido.listaProductos.size();
+			
 			if (i == 10) {
 				i=0;
 				total += 50;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author olivetti
  *
  */
-public abstract class Pedido {
+public abstract class Pedido implements Comisionables{
 	
 	// ATRIBUTOS
 	protected ArrayList<Producto> listaProductos = new ArrayList<>();
@@ -31,6 +31,6 @@ public abstract class Pedido {
 	
 	// precio() y comision()
 	public abstract Double precio();
-	public abstract Double comisiones();
+	//public abstract Double comision();
 
 }
